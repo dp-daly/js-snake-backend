@@ -1,0 +1,3 @@
+#!/bin/bash
+# Run rubocop with the -a flag to auto-correct offenses
+bundle exec rubocop -a "$@"
