@@ -23,5 +23,8 @@ module JsSnakeBackend
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Set rspec as the default test framework for the app
+    config.generators.test_framework :rspec
   end
 end

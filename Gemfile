@@ -56,6 +56,12 @@ group :test do
   gem "selenium-webdriver"
 end
 
+group :development, :test do
+  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails'
+end
+
+gem 'shoulda-matchers', '~> 5.0'
+
 gem "dotenv-rails", groups: [ :development, :test ]
 
 # For generating and decoding JWT tokens
