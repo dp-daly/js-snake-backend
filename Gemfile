@@ -65,5 +65,4 @@ gem "shoulda-matchers", "~> 5.0"
 
 gem "dotenv-rails", groups: [ :development, :test ]
 
-# For generating and decoding JWT tokens
-gem "jwt"
+gem "devise", "~> 4.9"

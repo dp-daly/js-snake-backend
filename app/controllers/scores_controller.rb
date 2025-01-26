@@ -1,6 +1,4 @@
 class ScoresController < ApplicationController
-  before_action :authenticate_user_from_token
-
   def create
     score = @current_user.scores.new(score_params)
 

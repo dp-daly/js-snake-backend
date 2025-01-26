@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get "game/show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -14,12 +15,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "game#show"
   get "/game", to: "game#show"
-
-  post "/register", to: "auth#register"
-  post "/login", to: "auth#login"
-  post "/logout", to: "auth#logout"
-
-  get "/users", to: "auth#list_users"
 
   post "/scores", to: "scores#create"
 end
