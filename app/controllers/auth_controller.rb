@@ -23,15 +23,11 @@ class AuthController < ApplicationController
     end
   end
 
-    # Sign out user (invalidate session on client side)
     def logout
-      # This is essentially a no-op on the server side. The client needs to delete its token.
       render json: { message: "Successfully logged out" }, status: :ok
     end
 
-    # List all users (for admin or authenticated user)
     def list_users
-      # I will restrict this to admins or users with proper permissions later
       users = User.all
       render json: { users: users }, status: :ok
     end

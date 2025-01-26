@@ -54,13 +54,14 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "factory_bot_rails"
 end
 
 group :development, :test do
-  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails'
+  gem "rspec-rails", git: "https://github.com/rspec/rspec-rails"
 end
 
-gem 'shoulda-matchers', '~> 5.0'
+gem "shoulda-matchers", "~> 5.0"
 
 gem "dotenv-rails", groups: [ :development, :test ]
 
