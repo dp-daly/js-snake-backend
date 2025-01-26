@@ -24,14 +24,14 @@ const playAgainBtnEl = document.querySelector(".restart-button");
 const gameMessageEl = document.querySelector("#message");
 const themeButton = document.querySelector(".theme-button");
 const pauseButtonEl = document.querySelector(".pauseaudio-button");
-const playButtonEl = document.querySelector(".playaudio-button");
+const playAudioButtonEl = document.querySelector(".playaudio-button");
 const backgroundArcadeEl = document.querySelector("#background-arcade");
 const munchEl = document.querySelector("#munch");
 const screamEl = document.querySelector("#creature-scream");
 const grassEl = document.querySelector(".grass");
-const welcomeBoxEl = document.querySelector(".welcomebox");
 const statusColumnEl = document.querySelector(".status-column");
 const initialTitleEl = document.querySelector(".initial-title");
+const playGameButtonEl = document.querySelector(".play-button")
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -43,24 +43,12 @@ cells.forEach((cell, i) => {
 
 function init() {
     gameOver = true;
-    playAgainBtnEl.classList.add("hidden");
-    themeButton.classList.add("hidden");
-    pauseButtonEl.classList.add("hidden");
-    playButtonEl.classList.add("hidden");
-    grassEl.classList.add("hidden");
-    statusColumnEl.classList.add('hidden');
 }
 
 init();
 
 function play() {
     gameOver = false;
-    themeButton.classList.remove("hidden");
-    pauseButtonEl.classList.remove("hidden");
-    grassEl.classList.remove("hidden");
-    statusColumnEl.classList.remove("hidden");
-    initialTitleEl.classList.add("hidden");
-    welcomeBoxEl.classList.add("hidden");
     backgroundArcadeEl.play();
     autoMove();
     render();
@@ -186,7 +174,6 @@ function checkForSelfHit() {
     })
 }
 
-
 function generateRandomNum() {
     return validCellIndexes[(Math.floor(Math.random() * validCellIndexes.length))];
 }
@@ -228,13 +215,12 @@ themeButton.addEventListener("click", () => {
 pauseButtonEl.addEventListener("click", () => {
     backgroundArcadeEl.pause();
     pauseButtonEl.classList.add("hidden");
-    playButtonEl.classList.remove("hidden");
+    playAudioButtonEl.classList.remove("hidden");
 })
 
-playButtonEl.addEventListener("click", () => {
+playAudioButtonEl.addEventListener("click", () => {
     backgroundArcadeEl.play();
-    playButtonEl.classList.add("hidden");
+    playAudioButtonEl.classList.add("hidden");
     pauseButtonEl.classList.remove("hidden");
 })
-
-welcomeBoxEl.addEventListener("click", play);
+playGameButtonEl.addEventListener("click", play);

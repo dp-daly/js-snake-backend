@@ -44,6 +44,11 @@
   width: 200px;
 }
 
+.play-button {
+  color: goldenrod;
+  font-size: 100%;
+}
+
 body {
   display: flex;
   background-image: url('../assets/origbig.png');
