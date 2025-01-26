@@ -1,16 +1,11 @@
-<html lang="en">
-  <head>
-    <%= javascript_importmap_tags %>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>serpens.js</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Pixelify+Sans:wght@400..700&family=VT323&display=swap">
-    <%= stylesheet_link_tag "game", media: "all" %>
-  </head>
-  <body>
-    <audio id="background-arcade" src="./assets/background-arcade.mp3" loop="true"></audio>
-    <audio id="munch" src="./assets/munch.mp3"></audio>
-    <audio id="creature-scream" src="./assets/creature scream.mp3"></audio>
+<% content_for :head do %>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Pixelify+Sans:wght@400..700&family=VT323&display=swap">
+  <%= stylesheet_link_tag "game", media: "all" %>
+<% end %>
+
+  <audio id="background-arcade" src="./assets/background-arcade.mp3" loop="true"></audio>
+  <audio id="munch" src="./assets/munch.mp3"></audio>
+  <audio id="creature-scream" src="./assets/creature scream.mp3"></audio>
     <section class="status-column" aria-label="A column including the status message and buttons to restart the game or change the theme.">
       <header>
         <div class="title" aria-label="A title graphic reading 'serpens.js'">
@@ -454,5 +449,4 @@
         </div>
       </div>
   </section>
-  </body>
 </html>
