@@ -4,6 +4,8 @@
     <title><%= content_for(:title) || "Js Snake Backend" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--- TODO: Access current_user via the devise cookie outside of meta_tags --->
+    <meta name="user-id" content="<%= current_user.id if current_user %>"> 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

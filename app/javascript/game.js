@@ -31,8 +31,7 @@ const screamEl = document.querySelector("#creature-scream");
 const grassEl = document.querySelector(".grass");
 const statusColumnEl = document.querySelector(".status-column");
 const initialTitleEl = document.querySelector(".initial-title");
-const playGameButtonEl = document.querySelector(".play-button")
-
+const playGameButtonEl = document.querySelector(".play-button");
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -98,6 +97,7 @@ function moveSnake(event) {
     }
     if (currentHeadIndex === croissantIndex) {
         croissantsEaten += 1;
+        handleScore(croissantsEaten);
     }
     headIndex = snakePosition[0];
     snakePosition.unshift(headIndex + direction);

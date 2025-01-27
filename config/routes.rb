@@ -18,5 +18,5 @@ Rails.application.routes.draw do
 
   get "/game", to: "game#show"
 
-  post "/scores", to: "scores#create"
+  post "/scores", to: "scores#handle_score"
 end
