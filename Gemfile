@@ -61,7 +61,7 @@ group :development, :test do
   gem "rspec-rails", git: "https://github.com/rspec/rspec-rails"
 end
 
-gem "shoulda-matchers", "~> 5.0"
+gem "shoulda-matchers", "~> 6.4"
 
 gem "dotenv-rails", groups: [ :development, :test ]
 
