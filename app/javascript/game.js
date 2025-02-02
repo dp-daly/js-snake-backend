@@ -1,3 +1,5 @@
+import { handleScore } from "score"
+
 /*-------------------------------- Constants --------------------------------*/
 
 const cells = document.querySelectorAll(".grass div");
@@ -97,7 +99,7 @@ function moveSnake(event) {
     }
     if (currentHeadIndex === croissantIndex) {
         croissantsEaten += 1;
-        handleScore(croissantsEaten);
+        // handleScore(croissantsEaten);
     }
     headIndex = snakePosition[0];
     snakePosition.unshift(headIndex + direction);
@@ -163,6 +165,7 @@ function makeWallsSolid() {
     }
     if (rowPosition <= 0 || rowPosition === width -1) {
         gameOver = true;
+        handleScore(croissantsEaten);
     }
 }
 
@@ -170,6 +173,7 @@ function checkForSelfHit() {
     currentBodyIndex.forEach((bodyPart) => {
         if (currentHeadIndex === bodyPart) {
             gameOver = true;
+            handleScore(croissantsEaten);
         }
     })
 }
