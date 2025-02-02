@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  get "game/show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -12,10 +11,9 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  # root "posts#index"
-  get "/", to: "welcome#index"
-
+  root "gameplay#show"
   get "/gameplay", to: "gameplay#show"
 
-  post "/scores", to: "scores#handle_score"
+  post "/start_game", to: "games#create"
+  post "/end_game", to: "games#game_over"
 end

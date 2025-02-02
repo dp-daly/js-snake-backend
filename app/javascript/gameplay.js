@@ -1,4 +1,5 @@
-import { handleScore } from "score"
+import { createGame } from "./startGame"
+import { endGame } from "./endGame"
 
 /*-------------------------------- Constants --------------------------------*/
 
@@ -10,6 +11,7 @@ const snakePosition = [168, 169, 170]
 
 /*-------------------------------- Variables --------------------------------*/
 
+let gameId
 let headIndex
 let currentHeadIndex
 let currentBodyIndex
@@ -22,6 +24,7 @@ let lastKeyDown = "ArrowDown"
 
 /*------------------------ Cached Element References ------------------------*/
 
+const userId = document.querySelector('meta[name="user-id"]').content;
 const playAgainBtnEl = document.querySelector(".restart-button");
 const gameMessageEl = document.querySelector("#message");
 const themeButton = document.querySelector(".theme-button");
@@ -48,12 +51,21 @@ function init() {
 
 init();
 
-function play() {
-    gameOver = false;
+async function play() {
+    gameOver = false;  
+    try {
+      const gameData = await createGame(userId);
+  
+      console.log("Game created with ID:", gameData.id);
+      gameId = gameData.id
+  
+      autoMove();
+      render();
+    } catch (error) {
+      console.error("Error creating game:", error.message);
+    }
     backgroundArcadeEl.play();
-    autoMove();
-    render();
-}
+  }
 
 makeCroissantAppear();
 
@@ -99,7 +111,6 @@ function moveSnake(event) {
     }
     if (currentHeadIndex === croissantIndex) {
         croissantsEaten += 1;
-        // handleScore(croissantsEaten);
     }
     headIndex = snakePosition[0];
     snakePosition.unshift(headIndex + direction);
@@ -162,10 +173,11 @@ function makeWallsSolid() {
     const colPosition = Math.floor(currentHeadIndex / width);
     if (colPosition <= 0 || colPosition === width -1) {
         gameOver = true;
+        endGame(gameId, croissantsEaten)
     }
     if (rowPosition <= 0 || rowPosition === width -1) {
         gameOver = true;
-        handleScore(croissantsEaten);
+        endGame(gameId, croissantsEaten)
     }
 }
 
@@ -173,7 +185,7 @@ function checkForSelfHit() {
     currentBodyIndex.forEach((bodyPart) => {
         if (currentHeadIndex === bodyPart) {
             gameOver = true;
-            handleScore(croissantsEaten);
+            endGame(gameId, croissantsEaten)
         }
     })
 }
