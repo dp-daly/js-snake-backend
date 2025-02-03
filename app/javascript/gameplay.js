@@ -53,17 +53,19 @@ init();
 
 async function play() {
     gameOver = false;  
-    try {
-      const gameData = await createGame(userId);
-  
-      console.log("Game created with ID:", gameData.id);
-      gameId = gameData.id
-  
-      autoMove();
-      render();
-    } catch (error) {
-      console.error("Error creating game:", error.message);
+    if (userId && userId.trim() !== "") {
+        try {
+        const gameData = await createGame(userId);
+    
+        console.log("Game created with ID:", gameData.id);
+        gameId = gameData.id    
+
+        } catch (error) {
+        console.error("Error creating game:", error.message);
+        }
     }
+    autoMove();
+    render();
     backgroundArcadeEl.play();
   }
 
@@ -173,11 +175,15 @@ function makeWallsSolid() {
     const colPosition = Math.floor(currentHeadIndex / width);
     if (colPosition <= 0 || colPosition === width -1) {
         gameOver = true;
-        endGame(gameId, croissantsEaten)
+        if (userId && userId.trim() !== "") {
+            endGame(gameId, croissantsEaten)
+        }    
     }
     if (rowPosition <= 0 || rowPosition === width -1) {
         gameOver = true;
-        endGame(gameId, croissantsEaten)
+        if (userId && userId.trim() !== "") {
+            endGame(gameId, croissantsEaten)
+        }    
     }
 }
 
@@ -185,7 +191,9 @@ function checkForSelfHit() {
     currentBodyIndex.forEach((bodyPart) => {
         if (currentHeadIndex === bodyPart) {
             gameOver = true;
-            endGame(gameId, croissantsEaten)
+            if (userId && userId.trim() !== "") {
+                endGame(gameId, croissantsEaten)
+            }
         }
     })
 }
