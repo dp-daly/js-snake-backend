@@ -24,6 +24,7 @@ class GamesController < ApplicationController
     @score = Score.new(user_id: current_user.id, game_id: @game.id, value: score_value)
 
     if @score.save
+      @game.update(status: "complete")
       render json: @score, status: :created
     else
       render json: { error: "Failed to save score" }, status: :unprocessable_entity
