@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rspec/rspec-rails
-  revision: 1965116ceb6cf6cacafb2aea61ebfa50e0a08d58
+  revision: a5c742306581d93a46c19582c26526f86c4cbe5b
   specs:
     rspec-rails (7.2.0.pre)
       actionpack (>= 7.0)
@@ -247,7 +247,7 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.2.1)
-    rdoc (6.11.0)
+    rdoc (6.12.0)
       psych (>= 4.0.0)
     regexp_parser (2.10.0)
     reline (0.6.0)
@@ -256,7 +256,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.4.0)
-    rspec-core (3.13.2)
+    rspec-core (3.13.3)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.3)
       diff-lcs (>= 1.2.0, < 2.0)
